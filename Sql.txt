@@ -1,0 +1,82 @@
+1. select ProductName
+From Products;
+
+2. Select ProductName, Price
+From Products;
+
+
+3. Select CustomerID , CustomerName
+From Customers
+Order by CustomerName ASC;
+
+
+4.SELECT * 
+FROM Orders
+where YEAR(OrderDate) = 1997;
+
+
+5.
+SELECT FirstName, COUNT(OrderID) AS 'Numero totale di ordini'
+FROM Employees
+INNER JOIN Orders ON Employees.EmployeeID = Orders.EmployeeID
+GROUP BY FirstName;
+
+6.
+SELECT ProductName
+FROM Products
+WHERE UnitPrice > 50;
+
+7.
+select SupplierName,Country
+From Suppliers
+Where Country = 'Germania';
+
+8.
+select count(ProductID) as 'numero prodotti'
+from Products
+
+9.
+select OrderID , OrderDate
+from Orders
+Order by OrderDate 
+
+10.
+select FirstName,LastName
+From Employees
+
+
+11.
+SELECT ProductName
+from products
+where ProductName Like 'chocolate'
+
+12.
+SELECT SupplierName, Country
+FROM Suppliers
+WHERE Country IN ('Germany', 'France');
+
+13.
+SELECT Country, COUNT(CustomerID) AS 'clienti'
+FROM Customers
+GROUP BY Country;
+
+14.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
