@@ -174,9 +174,9 @@ button{
             </div>
             <nav>
                 <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="prenotazioni.php">Prenotazioni</a></li>
-                    <li><a href="contatti.php">Contatti</a></li>
+                    <li><a href="GitHub\JusticeLeague\home.html">Home</a></li>
+                    <li><a href="GitHub\JusticeLeague\prenotazioni.php">Prenotazioni</a></li>
+                    <li><a href="GitHub\JusticeLeague\contatti.php">Contatti</a></li>
                 </ul>
             </nav>
            <div class="login">
