@@ -7,8 +7,9 @@
 
         <?php
 
-            require_once 'D:\xamp\htdocs\progettiphp\GitHub\JusticeLeague\nav.php';
-            require_once 'D:\xamp\htdocs\progettiphp\GitHub\JusticeLeague\dbsetting_ospedale.php';
+            require_once '../nav.php';
+            require_once '../dbsetting_ospedale.php';
+
 
             session_start();
 
@@ -22,6 +23,10 @@
 
             else{
 
+                if(isset($_POST['id_reparto'])){
+                    
+                    $id_reparto = $connessione -> real_escape_string($_POST['id_reparto']);
+                }
                 if(isset($_POST['nome'])){
                     
                     $nome = $connessione -> real_escape_string($_POST['nome']);
@@ -31,10 +36,14 @@
                     $cognome = $connessione -> real_escape_string($_POST['cognome']);
                     
                 }
-                if(isset($_POST['data_nascita'])){
+                if(isset($_POST['specializzazione'])){
                     
-                    $data_nascita = $connessione -> real_escape_string($_POST['data_nascita']);
+                    $specializzazione = $connessione -> real_escape_string($_POST['specializzazione']);
                     
+                }
+                if(isset($_POST['email'])){
+                    
+                    $email = $connessione -> real_escape_string($_POST['email']);
                 }
                 if(isset($_POST['password'])){
                     
@@ -52,7 +61,7 @@
 
                     if($resault == true){
 
-                        header("Location: GitHub\JusticeLeague\home.html");
+                        header("Location: ../home.html");
                         exit;
 
                     }
@@ -64,11 +73,12 @@
                     }
                 }
 
-                if(isset($nome) && isset($cognome) && isset($data_nascita) && isset($password_user)){
+                if(isset($id_reparto) && isset($nome) && isset($cognome) && isset($specializzazione) && isset($email) && isset($password)){
 
-                    $query = "INSERT INTO paziente(nome, cognome ,data_nascita , password) VALUES (? , ? ,? , ?)";
-                    $parametri_user = [$nome , $cognome , $data_nascita , $password_user ];
-                    inserimentodati_user($connessione , $query , "ssss" , $parametri_user);
+                    $query = "INSERT INTO medico(id_reparto , Nome_medico , Cognome_medico ,
+                    Specializzazione , email , password) VALUES (? , ? ,? , ? , ? , ?)";
+                    $parametri_user = [$id_reparto, $nome , $cognome , $specializzazione ,$email , $password_user ];
+                    inserimentodati_user($connessione , $query , "isssss" , $parametri_user);
                 }
                 
 
@@ -78,14 +88,29 @@
 
         <form method="post">
             
-            Nome<input type="text" name="nome">
-            cognome<input type="text" name="cognome">
-            data_nascita<input type="text" name="data_nascita">
-            Password<input type="text" name="password">
-            <input type="submit" value="registrati">
+            <form method="post">
+
+                Numero Reparto: <input type="text" name="id_reparto" class="input"><br>
+                Nome: <input type="text" name="nome" class="input"><br>
+                Cognome: <input type="text" name="cognome" class="input"><br>
+                Specializzazione: <input type="text" name="specializzazione" class="input"><br>
+                Email: <input type="email" name="email" class="input"><br>
+                Password: <input type="password" name="password" class="input"><br>
+                <input type="submit" value="Registrati">
+
+            </form>
+
 
         </form>
 
+        <style>
+
+            .input{
+
+                    margin: 5px;
+                    
+                }
+        </style>
 
         
     </body>
